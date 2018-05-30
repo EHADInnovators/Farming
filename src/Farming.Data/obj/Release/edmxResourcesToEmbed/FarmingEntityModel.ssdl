@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SQLDBVirtualFarmerAssitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CHILD_FARM">
+    <Key>
+      <PropertyRef Name="CHILD_FARM_ID" />
+    </Key>
+    <Property Name="CHILD_FARM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MASTER_FARM_ID" Type="int" />
+    <Property Name="CHILD_FARM_NAME" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MASTER_FARM">
+    <Key>
+      <PropertyRef Name="MASTER_FARM_ID" />
+    </Key>
+    <Property Name="MASTER_FARM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MASTER_FARM_NAME" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEARCH_OPTIONS">
+    <Key>
+      <PropertyRef Name="SEARCH_OPTIONS_ID" />
+    </Key>
+    <Property Name="SEARCH_OPTIONS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CHILD_FARM_ID" Type="int" />
+    <Property Name="OPTIONS" Type="varchar" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SYMPTOM_RESULTS">
+    <Key>
+      <PropertyRef Name="SYMPTOM_RESULTS_ID" />
+    </Key>
+    <Property Name="SYMPTOM_RESULTS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SYMPTOMS_ID" Type="int" />
+    <Property Name="SYMPTOMS_DESC" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="SYMPTOMS">
+    <Key>
+      <PropertyRef Name="SYMPTOMS_ID" />
+    </Key>
+    <Property Name="SYMPTOMS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CHILD_FARM_ID" Type="int" />
+    <Property Name="SEARCH_OPTIONS_ID" Type="int" />
+    <Property Name="SYMPTOMS_DESC" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="SYMPTOMS_IMAGE" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="USER_QUERIES">
+    <Key>
+      <PropertyRef Name="USER_QUERY_ID" />
+    </Key>
+    <Property Name="USER_QUERY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USER_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="USER_EMAIL" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="USER_QUERY" Type="varchar(max)" Nullable="false" />
+    <Property Name="ATTACHMENT" Type="varchar" MaxLength="2000" />
+  </EntityType>
+  <Association Name="CHILD_FARM_FK">
+    <End Role="MASTER_FARM" Type="Self.MASTER_FARM" Multiplicity="0..1" />
+    <End Role="CHILD_FARM" Type="Self.CHILD_FARM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MASTER_FARM">
+        <PropertyRef Name="MASTER_FARM_ID" />
+      </Principal>
+      <Dependent Role="CHILD_FARM">
+        <PropertyRef Name="MASTER_FARM_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SEARCH_OPTIONS_FK">
+    <End Role="CHILD_FARM" Type="Self.CHILD_FARM" Multiplicity="0..1" />
+    <End Role="SEARCH_OPTIONS" Type="Self.SEARCH_OPTIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHILD_FARM">
+        <PropertyRef Name="CHILD_FARM_ID" />
+      </Principal>
+      <Dependent Role="SEARCH_OPTIONS">
+        <PropertyRef Name="CHILD_FARM_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYMPTOM_RESULTS_FK">
+    <End Role="SYMPTOMS" Type="Self.SYMPTOMS" Multiplicity="0..1" />
+    <End Role="SYMPTOM_RESULTS" Type="Self.SYMPTOM_RESULTS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SYMPTOMS">
+        <PropertyRef Name="SYMPTOMS_ID" />
+      </Principal>
+      <Dependent Role="SYMPTOM_RESULTS">
+        <PropertyRef Name="SYMPTOMS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYMPTOPMS_FK">
+    <End Role="SEARCH_OPTIONS" Type="Self.SEARCH_OPTIONS" Multiplicity="0..1" />
+    <End Role="SYMPTOMS" Type="Self.SYMPTOMS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEARCH_OPTIONS">
+        <PropertyRef Name="SEARCH_OPTIONS_ID" />
+      </Principal>
+      <Dependent Role="SYMPTOMS">
+        <PropertyRef Name="SEARCH_OPTIONS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SQLDBVirtualFarmerAssitModelStoreContainer">
+    <EntitySet Name="CHILD_FARM" EntityType="Self.CHILD_FARM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MASTER_FARM" EntityType="Self.MASTER_FARM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SEARCH_OPTIONS" EntityType="Self.SEARCH_OPTIONS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SYMPTOM_RESULTS" EntityType="Self.SYMPTOM_RESULTS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SYMPTOMS" EntityType="Self.SYMPTOMS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USER_QUERIES" EntityType="Self.USER_QUERIES" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="CHILD_FARM_FK" Association="Self.CHILD_FARM_FK">
+      <End Role="MASTER_FARM" EntitySet="MASTER_FARM" />
+      <End Role="CHILD_FARM" EntitySet="CHILD_FARM" />
+    </AssociationSet>
+    <AssociationSet Name="SEARCH_OPTIONS_FK" Association="Self.SEARCH_OPTIONS_FK">
+      <End Role="CHILD_FARM" EntitySet="CHILD_FARM" />
+      <End Role="SEARCH_OPTIONS" EntitySet="SEARCH_OPTIONS" />
+    </AssociationSet>
+    <AssociationSet Name="SYMPTOM_RESULTS_FK" Association="Self.SYMPTOM_RESULTS_FK">
+      <End Role="SYMPTOMS" EntitySet="SYMPTOMS" />
+      <End Role="SYMPTOM_RESULTS" EntitySet="SYMPTOM_RESULTS" />
+    </AssociationSet>
+    <AssociationSet Name="SYMPTOPMS_FK" Association="Self.SYMPTOPMS_FK">
+      <End Role="SEARCH_OPTIONS" EntitySet="SEARCH_OPTIONS" />
+      <End Role="SYMPTOMS" EntitySet="SYMPTOMS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

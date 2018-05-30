@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SQLDBVirtualFarmerAssitModelStoreContainer" CdmEntityContainer="SQLDBVirtualFarmerAssitEntities">
+    <EntitySetMapping Name="CHILD_FARM">
+      <EntityTypeMapping TypeName="SQLDBVirtualFarmerAssitModel.CHILD_FARM">
+        <MappingFragment StoreEntitySet="CHILD_FARM">
+          <ScalarProperty Name="CHILD_FARM_ID" ColumnName="CHILD_FARM_ID" />
+          <ScalarProperty Name="MASTER_FARM_ID" ColumnName="MASTER_FARM_ID" />
+          <ScalarProperty Name="CHILD_FARM_NAME" ColumnName="CHILD_FARM_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MASTER_FARM">
+      <EntityTypeMapping TypeName="SQLDBVirtualFarmerAssitModel.MASTER_FARM">
+        <MappingFragment StoreEntitySet="MASTER_FARM">
+          <ScalarProperty Name="MASTER_FARM_ID" ColumnName="MASTER_FARM_ID" />
+          <ScalarProperty Name="MASTER_FARM_NAME" ColumnName="MASTER_FARM_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEARCH_OPTIONS">
+      <EntityTypeMapping TypeName="SQLDBVirtualFarmerAssitModel.SEARCH_OPTIONS">
+        <MappingFragment StoreEntitySet="SEARCH_OPTIONS">
+          <ScalarProperty Name="SEARCH_OPTIONS_ID" ColumnName="SEARCH_OPTIONS_ID" />
+          <ScalarProperty Name="CHILD_FARM_ID" ColumnName="CHILD_FARM_ID" />
+          <ScalarProperty Name="OPTIONS" ColumnName="OPTIONS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SYMPTOM_RESULTS">
+      <EntityTypeMapping TypeName="SQLDBVirtualFarmerAssitModel.SYMPTOM_RESULTS">
+        <MappingFragment StoreEntitySet="SYMPTOM_RESULTS">
+          <ScalarProperty Name="SYMPTOM_RESULTS_ID" ColumnName="SYMPTOM_RESULTS_ID" />
+          <ScalarProperty Name="SYMPTOMS_ID" ColumnName="SYMPTOMS_ID" />
+          <ScalarProperty Name="SYMPTOMS_DESC" ColumnName="SYMPTOMS_DESC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SYMPTOMS">
+      <EntityTypeMapping TypeName="SQLDBVirtualFarmerAssitModel.SYMPTOM">
+        <MappingFragment StoreEntitySet="SYMPTOMS">
+          <ScalarProperty Name="SYMPTOMS_ID" ColumnName="SYMPTOMS_ID" />
+          <ScalarProperty Name="CHILD_FARM_ID" ColumnName="CHILD_FARM_ID" />
+          <ScalarProperty Name="SEARCH_OPTIONS_ID" ColumnName="SEARCH_OPTIONS_ID" />
+          <ScalarProperty Name="SYMPTOMS_DESC" ColumnName="SYMPTOMS_DESC" />
+          <ScalarProperty Name="SYMPTOMS_IMAGE" ColumnName="SYMPTOMS_IMAGE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER_QUERIES">
+      <EntityTypeMapping TypeName="SQLDBVirtualFarmerAssitModel.USER_QUERIES">
+        <MappingFragment StoreEntitySet="USER_QUERIES">
+          <ScalarProperty Name="ATTACHMENT" ColumnName="ATTACHMENT" />
+          <ScalarProperty Name="USER_QUERY" ColumnName="USER_QUERY" />
+          <ScalarProperty Name="USER_EMAIL" ColumnName="USER_EMAIL" />
+          <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+          <ScalarProperty Name="USER_QUERY_ID" ColumnName="USER_QUERY_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

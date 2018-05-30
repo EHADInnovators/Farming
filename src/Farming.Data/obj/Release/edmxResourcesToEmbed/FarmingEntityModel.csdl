@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SQLDBVirtualFarmerAssitModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CHILD_FARM">
+    <Key>
+      <PropertyRef Name="CHILD_FARM_ID" />
+    </Key>
+    <Property Name="CHILD_FARM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MASTER_FARM_ID" Type="Int32" />
+    <Property Name="CHILD_FARM_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="MASTER_FARM" Relationship="Self.CHILD_FARM_FK" FromRole="CHILD_FARM" ToRole="MASTER_FARM" />
+    <NavigationProperty Name="SEARCH_OPTIONS" Relationship="Self.SEARCH_OPTIONS_FK" FromRole="CHILD_FARM" ToRole="SEARCH_OPTIONS" />
+  </EntityType>
+  <EntityType Name="MASTER_FARM">
+    <Key>
+      <PropertyRef Name="MASTER_FARM_ID" />
+    </Key>
+    <Property Name="MASTER_FARM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MASTER_FARM_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CHILD_FARM" Relationship="Self.CHILD_FARM_FK" FromRole="MASTER_FARM" ToRole="CHILD_FARM" />
+  </EntityType>
+  <EntityType Name="SEARCH_OPTIONS">
+    <Key>
+      <PropertyRef Name="SEARCH_OPTIONS_ID" />
+    </Key>
+    <Property Name="SEARCH_OPTIONS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CHILD_FARM_ID" Type="Int32" />
+    <Property Name="OPTIONS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CHILD_FARM" Relationship="Self.SEARCH_OPTIONS_FK" FromRole="SEARCH_OPTIONS" ToRole="CHILD_FARM" />
+    <NavigationProperty Name="SYMPTOMS" Relationship="Self.SYMPTOPMS_FK" FromRole="SEARCH_OPTIONS" ToRole="SYMPTOMS" />
+  </EntityType>
+  <EntityType Name="SYMPTOM_RESULTS">
+    <Key>
+      <PropertyRef Name="SYMPTOM_RESULTS_ID" />
+    </Key>
+    <Property Name="SYMPTOM_RESULTS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SYMPTOMS_ID" Type="Int32" />
+    <Property Name="SYMPTOMS_DESC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SYMPTOM" Relationship="Self.SYMPTOM_RESULTS_FK" FromRole="SYMPTOM_RESULTS" ToRole="SYMPTOMS" />
+  </EntityType>
+  <EntityType Name="SYMPTOM">
+    <Key>
+      <PropertyRef Name="SYMPTOMS_ID" />
+    </Key>
+    <Property Name="SYMPTOMS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CHILD_FARM_ID" Type="Int32" />
+    <Property Name="SEARCH_OPTIONS_ID" Type="Int32" />
+    <Property Name="SYMPTOMS_DESC" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SYMPTOMS_IMAGE" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="SEARCH_OPTIONS" Relationship="Self.SYMPTOPMS_FK" FromRole="SYMPTOMS" ToRole="SEARCH_OPTIONS" />
+    <NavigationProperty Name="SYMPTOM_RESULTS" Relationship="Self.SYMPTOM_RESULTS_FK" FromRole="SYMPTOMS" ToRole="SYMPTOM_RESULTS" />
+  </EntityType>
+  <Association Name="CHILD_FARM_FK">
+    <End Role="MASTER_FARM" Type="Self.MASTER_FARM" Multiplicity="0..1" />
+    <End Role="CHILD_FARM" Type="Self.CHILD_FARM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MASTER_FARM">
+        <PropertyRef Name="MASTER_FARM_ID" />
+      </Principal>
+      <Dependent Role="CHILD_FARM">
+        <PropertyRef Name="MASTER_FARM_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SEARCH_OPTIONS_FK">
+    <End Role="CHILD_FARM" Type="Self.CHILD_FARM" Multiplicity="0..1" />
+    <End Role="SEARCH_OPTIONS" Type="Self.SEARCH_OPTIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHILD_FARM">
+        <PropertyRef Name="CHILD_FARM_ID" />
+      </Principal>
+      <Dependent Role="SEARCH_OPTIONS">
+        <PropertyRef Name="CHILD_FARM_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYMPTOPMS_FK">
+    <End Role="SEARCH_OPTIONS" Type="Self.SEARCH_OPTIONS" Multiplicity="0..1" />
+    <End Role="SYMPTOMS" Type="Self.SYMPTOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEARCH_OPTIONS">
+        <PropertyRef Name="SEARCH_OPTIONS_ID" />
+      </Principal>
+      <Dependent Role="SYMPTOMS">
+        <PropertyRef Name="SEARCH_OPTIONS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYMPTOM_RESULTS_FK">
+    <End Role="SYMPTOMS" Type="Self.SYMPTOM" Multiplicity="0..1" />
+    <End Role="SYMPTOM_RESULTS" Type="Self.SYMPTOM_RESULTS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SYMPTOMS">
+        <PropertyRef Name="SYMPTOMS_ID" />
+      </Principal>
+      <Dependent Role="SYMPTOM_RESULTS">
+        <PropertyRef Name="SYMPTOMS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SQLDBVirtualFarmerAssitEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CHILD_FARM" EntityType="Self.CHILD_FARM" />
+    <EntitySet Name="MASTER_FARM" EntityType="Self.MASTER_FARM" />
+    <EntitySet Name="SEARCH_OPTIONS" EntityType="Self.SEARCH_OPTIONS" />
+    <EntitySet Name="SYMPTOM_RESULTS" EntityType="Self.SYMPTOM_RESULTS" />
+    <EntitySet Name="SYMPTOMS" EntityType="Self.SYMPTOM" />
+    <AssociationSet Name="CHILD_FARM_FK" Association="Self.CHILD_FARM_FK">
+      <End Role="MASTER_FARM" EntitySet="MASTER_FARM" />
+      <End Role="CHILD_FARM" EntitySet="CHILD_FARM" />
+    </AssociationSet>
+    <AssociationSet Name="SEARCH_OPTIONS_FK" Association="Self.SEARCH_OPTIONS_FK">
+      <End Role="CHILD_FARM" EntitySet="CHILD_FARM" />
+      <End Role="SEARCH_OPTIONS" EntitySet="SEARCH_OPTIONS" />
+    </AssociationSet>
+    <AssociationSet Name="SYMPTOPMS_FK" Association="Self.SYMPTOPMS_FK">
+      <End Role="SEARCH_OPTIONS" EntitySet="SEARCH_OPTIONS" />
+      <End Role="SYMPTOMS" EntitySet="SYMPTOMS" />
+    </AssociationSet>
+    <AssociationSet Name="SYMPTOM_RESULTS_FK" Association="Self.SYMPTOM_RESULTS_FK">
+      <End Role="SYMPTOMS" EntitySet="SYMPTOMS" />
+      <End Role="SYMPTOM_RESULTS" EntitySet="SYMPTOM_RESULTS" />
+    </AssociationSet>
+    <EntitySet Name="USER_QUERIES" EntityType="SQLDBVirtualFarmerAssitModel.USER_QUERIES" />
+  </EntityContainer>
+  <EntityType Name="USER_QUERIES">
+    <Key>
+      <PropertyRef Name="USER_QUERY_ID" />
+    </Key>
+    <Property Name="USER_QUERY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USER_NAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="USER_EMAIL" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="USER_QUERY" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ATTACHMENT" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

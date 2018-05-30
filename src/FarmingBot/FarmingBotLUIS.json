@@ -1,0 +1,152 @@
+{
+  "luis_schema_version": "2.1.0",
+  "versionId": "0.1",
+  "name": "FarmingBot",
+  "desc": "FarmingBot LUIS App Definition",
+  "culture": "en-us",
+  "intents": [
+    {
+      "name": "Help"
+    },
+    {
+      "name": "None"
+    },
+    {
+      "name": "GetAssitance.Crops"
+    }
+  ],
+  "entities": [
+    {
+      "name": "Farming"
+    }
+  ],
+  "composites": [],
+  "closedLists": [],
+  "bing_entities": [
+    "datetimeV2",
+    "money",
+    "number"
+  ],
+  "actions": [],
+  "model_features": [],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "hello",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "help",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "what can you do?",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "I want to get assistance for crops",
+      "intent": "GetAssitance.Crops",
+      "entities": [
+        {
+          "entity": "Farming",
+          "startPos": 0,
+          "endPos": 33
+        }
+      ]
+    },
+    {
+      "text": "I want to get assistance for farms related queries",
+      "intent": "GetAssitance.Crops",
+      "entities": [
+        {
+          "entity": "Farming",
+          "startPos": 0,
+          "endPos": 49
+        }
+      ]
+    },
+
+    {
+      "text": "crops",
+      "intent": "GetAssitance.Crops",
+      "entities": [
+        {
+          "entity": "Farming",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "farms",
+      "intent": "GetAssitance.Crops",
+      "entities": [
+        {
+          "entity": "Farming",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "crops assistance",
+      "intent": "GetAssitance.Crops",
+      "entities": [
+        {
+          "entity": "Farming",
+          "startPos": 0,
+          "endPos": 15
+        }
+      ]
+    },
+    {
+      "text": "Farms assistance",
+      "intent": "GetAssitance.Crops",
+      "entities": [
+        {
+          "entity": "Farming",
+          "startPos": 0,
+          "endPos": 15
+        }
+      ]
+    },
+    {
+      "text": "I would like to get assistance for crops",
+      "intent": "GetAssitance.Crops",
+      "entities": [
+        {
+          "entity": "Farming",
+          "startPos": 0,
+          "endPos": 39
+        }
+      ]
+    },
+    {
+      "text": "I would like to get assistance for farms",
+      "intent": "GetAssitance.Crops",
+      "entities": [
+        {
+          "entity": "Farming",
+          "startPos": 0,
+          "endPos": 39
+        }
+      ]
+    },
+    {
+      "text": "Plants",
+      "intent": "GetAssitance.Crops",
+      "entities": [
+        {
+          "entity": "Farming",
+          "startPos": 0,
+          "endPos": 5
+        }
+      ]
+    }
+
+
+  ]
+}

@@ -1,0 +1,12 @@
+C:\Users\hackuser2\Desktop\Azure\CSharp\Farming\src\FarmingData\bin\Debug\FarmingData.dll.config
+C:\Users\hackuser2\Desktop\Azure\CSharp\Farming\src\FarmingData\bin\Debug\FarmingData.dll
+C:\Users\hackuser2\Desktop\Azure\CSharp\Farming\src\FarmingData\bin\Debug\FarmingData.pdb
+C:\Users\hackuser2\Desktop\Azure\CSharp\Farming\src\FarmingData\bin\Debug\EntityFramework.dll
+C:\Users\hackuser2\Desktop\Azure\CSharp\Farming\src\FarmingData\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\hackuser2\Desktop\Azure\CSharp\Farming\src\FarmingData\bin\Debug\Farming.Model.dll
+C:\Users\hackuser2\Desktop\Azure\CSharp\Farming\src\FarmingData\bin\Debug\Farming.Model.pdb
+C:\Users\hackuser2\Desktop\Azure\CSharp\Farming\src\FarmingData\bin\Debug\EntityFramework.xml
+C:\Users\hackuser2\Desktop\Azure\CSharp\Farming\src\FarmingData\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\hackuser2\Desktop\Azure\CSharp\Farming\src\FarmingData\obj\Debug\FarmingData.csprojResolveAssemblyReference.cache
+C:\Users\hackuser2\Desktop\Azure\CSharp\Farming\src\FarmingData\obj\Debug\FarmingData.dll
+C:\Users\hackuser2\Desktop\Azure\CSharp\Farming\src\FarmingData\obj\Debug\FarmingData.pdb

@@ -1,0 +1,3 @@
+C:\Users\hackuser2\Desktop\Azure\CSharp\Farming\src\FarmingData\obj\Debug\Farming.Data.csprojResolveAssemblyReference.cache
+C:\Users\hackuser2\Desktop\Azure\CSharp\Farming\src\FarmingData\obj\Debug\FarmingData.dll
+C:\Users\hackuser2\Desktop\Azure\CSharp\Farming\src\FarmingData\obj\Debug\FarmingData.pdb

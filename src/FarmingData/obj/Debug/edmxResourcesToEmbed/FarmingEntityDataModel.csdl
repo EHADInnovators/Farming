@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SQLDBVirtualFarmerAssitModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CHILD_FARM">
+    <Key>
+      <PropertyRef Name="CHILD_FARM_ID" />
+    </Key>
+    <Property Name="CHILD_FARM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MASTER_FARM_ID" Type="Int32" />
+    <Property Name="CHILD_FARM_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MASTER_FARM">
+    <Key>
+      <PropertyRef Name="MASTER_FARM_ID" />
+    </Key>
+    <Property Name="MASTER_FARM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MASTER_FARM_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEARCH_OPTIONS">
+    <Key>
+      <PropertyRef Name="SEARCH_OPTIONS_ID" />
+    </Key>
+    <Property Name="SEARCH_OPTIONS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OPTIONS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SYMPTOM_RESLUTS">
+    <Key>
+      <PropertyRef Name="SYMPTOMS_ID" />
+    </Key>
+    <Property Name="SYMPTOM_RESLUTS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SYMPTOMS_ID" Type="Int32" Nullable="false" />
+    <Property Name="SYMPTOMS_DESC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SYMPTOM">
+    <Key>
+      <PropertyRef Name="SYMPTOMS_ID" />
+    </Key>
+    <Property Name="SYMPTOMS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CHILD_FARM_ID" Type="Int32" />
+    <Property Name="SYMPTOMS_DESC" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="database_firewall_rules">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="start_ip_address" />
+      <PropertyRef Name="end_ip_address" />
+      <PropertyRef Name="create_date" />
+      <PropertyRef Name="modify_date" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="SQLDBVirtualFarmerAssitEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CHILD_FARM" EntityType="Self.CHILD_FARM" />
+    <EntitySet Name="MASTER_FARM" EntityType="Self.MASTER_FARM" />
+    <EntitySet Name="SEARCH_OPTIONS" EntityType="Self.SEARCH_OPTIONS" />
+    <EntitySet Name="SYMPTOM_RESLUTS" EntityType="Self.SYMPTOM_RESLUTS" />
+    <EntitySet Name="SYMPTOMS" EntityType="Self.SYMPTOM" />
+    <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
+  </EntityContainer>
+</Schema>

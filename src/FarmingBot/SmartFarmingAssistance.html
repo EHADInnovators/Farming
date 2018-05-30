@@ -1,0 +1,287 @@
+﻿<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SmartFarmingAssitance</title>
+
+   
+
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/fontAwesome.css">
+        <link rel="stylesheet" href="css/hero-slider.css">
+        <link rel="stylesheet" href="css/owl-carousel.css">
+        <link rel="stylesheet" href="css/datepicker.css">        
+        <link rel="stylesheet" href="css/templatemo-style.css">
+          <link href="css/botchat.css" rel="stylesheet" />
+	
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+		
+    <style>
+      .example {
+        float: left;
+        margin-right: 20px;
+        width: 200px;
+      }
+
+      .example > h2 {
+        font-family: 'Segoe UI';
+      }
+
+      #BotChatGoesHere {
+        border: 1px solid #333;
+        float: left;
+        height: 500px;
+        position: relative;
+        width: 350px;
+		
+      }
+    </style>
+  </head>
+  <body >
+   <section class="services" id="services-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+				<!--<img src="img/9.jpg" alt="">-->
+				<div class="flip-container" ontouchstart="this.classList.toggle('hover'); style="height:150px;"">
+                        <div class="flipper first-service">
+                            <div class="front">
+                                <div class="icon">
+                                    <img src="img/9.jpg" alt="">
+									<h4>Home</h4>
+                                </div>
+                                
+                            </div>
+                            <div class="back">
+                                <p>Agriculture is in the grip of a revolution.To create further intelligent digital tools to advance connectivity in agriculture, with the objective of conserving resources, safeguarding harvests and protecting the environment.</p>
+                            </div>
+                        </div>
+                    </div>
+				
+                   
+                </div>
+                <div class="col-md-3">
+				<div class="flip-container" ontouchstart="this.classList.toggle('hover'); style="height:150px;"">
+                        <div class="flipper first-service">
+                            <div class="front">
+                                <div class="icon">
+                                    <img src="img/11.jpg" alt="">
+									<h4>Services</h4>
+                                </div>
+                                
+                            </div>
+                            <div class="back">
+                                <p>The website/mobile app has Virtual web chat integrated in it. With that, the farmers can easily chat and get their queries clarified.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-md-3">
+				<div class="flip-container" ontouchstart="this.classList.toggle('hover'); style="height:150px;"">
+                        <div class="flipper first-service">
+                            <div class="front">
+                                <div class="icon">
+                                    <img src="img/13.jpg" alt="">
+									<h4>Technology</h4>
+                                </div>
+                                
+                            </div>
+                            <div class="back">
+                                <p>Through Azure Bot Service, the chat box is communicated with LUIS and QA maker to get the intent and respond back with the message. The data’s are stored in AZURE database and for every call the data’s returned from the DB and it is configurable.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-md-3">
+				 <div class="flip-container" ontouchstart="this.classList.toggle('hover'); style="height:150px;"">
+                        <div class="flipper first-service">
+                            <div class="front">
+                                <div class="icon">
+                                    <img src="img/15.jpg" alt="">
+									<h4>SmartFarming Assistance</h4>
+                                </div>
+                                
+                            </div>
+                            <div class="back">
+                                <p>A chatbot (also known as a talkbot, chatterbot, Bot, IM bot, interactive agent, or Artificial Conversational Entity) is a computer program or an artificial intelligence which conducts a conversation via auditory or textual methods</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+<section class="contact-us" id="contact-section"> 
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <form id="contact" action="" method="post">
+                      
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-right-content">
+                        <div id="BotChatGoesHere"></div>
+         </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdn.botframework.com/botframework-webchat/latest/botchat.js"></script>
+
+    <!-- If you do not want to use Cognitive Services library, comment out the following line -->
+    <script src="https://cdn.botframework.com/botframework-webchat/latest/CognitiveServices.js"></script>
+
+    <script>
+      const params = BotChat.queryParams(location.search);
+
+      const user = {
+        id: params['userid'] || 'userid',
+        name: params['username'] || 'username'
+      };
+
+      const bot = {
+        id: params['botid'] || 'botid',
+        name: params['botname'] || 'botname'
+      };
+
+      window.botchatDebug = params['debug'] && params['debug'] === 'true';
+
+      // // Option 1: No speech
+      //
+      //const speechOptions = null;
+
+      // // Option 2: Native browser speech (not supported by all browsers, no speech recognition priming support)
+      //
+      // Note that Chrome automatically blocks speech if the HTML file is loaded from disk. You can run a server locally
+      // or launch Chrome (close all the existing Chrome browsers) with the following option:
+      // chrome.exe --allow-file-access-from-files <sampleHtmlFile>
+      //
+      //const speechOptions = {
+      //   speechRecognizer: new BotChat.Speech.BrowserSpeechRecognizer(),
+      //   speechSynthesizer: new BotChat.Speech.BrowserSpeechSynthesizer()
+      //};
+
+      // // Option 3: Cognitive Services speech recognition using API key (cross browser, speech priming support)
+      //
+      
+      const speechOptions = {
+          speechRecognizer: new CognitiveServices.SpeechRecognizer({ subscriptionKey: '234d1afdeb9b4fee947d8cd3fb90c48c' }),
+        speechSynthesizer: new CognitiveServices.SpeechSynthesizer({
+          gender: CognitiveServices.SynthesisGender.Female,
+          subscriptionKey: '234d1afdeb9b4fee947d8cd3fb90c48c',
+          voiceName: 'Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'
+        })
+      };
+      
+      //
+
+      // // Option 4: Cognitive Services speech recognition using a token (usually generated in a secure backend using your API key)
+      //
+      // function getToken() {
+      //   // Normally this token fetch is done from your secured backend to avoid exposing the API key and this call
+      //   // would be to your backend, or to retrieve a token that was served as part of the original page.
+
+      //   return fetch(
+      //     'https://api.cognitive.microsoft.com/sts/v1.0/issueToken',
+      //     {
+      //       headers: {
+      //         'Ocp-Apim-Subscription-Key': 'YOUR_COGNITIVE_SPEECH_API_KEY'
+      //       },
+      //       method: 'POST'
+      //     }
+      //   ).then(res => res.text());
+      // }
+
+      // const speechOptions = {
+      //   speechRecognizer: new CognitiveServices.SpeechRecognizer({
+      //     fetchCallback: (authFetchEventId) => getToken(),
+      //     fetchOnExpiryCallback: (authFetchEventId) => getToken()
+      //   }),
+      //   speechSynthesizer: new BotChat.Speech.BrowserSpeechSynthesizer()
+      // };
+
+      // // Option 5: Your own custom implementations of ISpeechRecognizer and ISpeechSynthesizer
+      //
+      // const speechOptions = {
+      //   speechRecognizer: new YourOwnSpeechRecognizer(),
+      //   speechSynthesizer: new YourOwnSpeechSynthesizer()
+      // };
+
+      BotChat.App({
+        bot: bot,
+        locale: params['locale'],
+        resize: 'detect',
+        // sendTyping: true,    // defaults to false. set to true to send 'typing' activities to bot (and other users) when user is typing
+        speechOptions: speechOptions,
+        user: user,
+
+        directLine: {
+          domain: params['domain'],
+          secret: params['s'],
+          token: params['t'],
+          webSocket: params['webSocket'] && params['webSocket'] === 'true' // defaults to true
+        }
+      }, document.getElementById('BotChatGoesHere'));
+    </script>
+  
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+    <script src="js/vendor/bootstrap.min.js"></script>
+    
+    <script src="js/datepicker.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+	
+    $(document).ready(function() 
+	{
+        // navigation click actions 
+        $('.scroll-link').on('click', function(event){
+            event.preventDefault();
+            var sectionID = $(this).attr("data-id");
+            scrollToID('#' + sectionID, 750);
+        });
+        // scroll to top action
+        $('.scroll-top').on('click', function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop:0}, 'slow');         
+        });
+        // mobile nav toggle
+        $('#nav-toggle').on('click', function (event) {
+            event.preventDefault();
+            $('#main-nav').toggleClass("open");
+        });
+    });
+    // scroll function
+    function scrollToID(id, speed){
+        var offSet = 0;
+        var targetOffset = $(id).offset().top - offSet;
+        var mainNav = $('#main-nav');
+        $('html,body').animate({scrollTop:targetOffset}, speed);
+        if (mainNav.hasClass("open")) {
+            mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+            mainNav.removeClass("open");
+        }
+    }
+    if (typeof console === "undefined") {
+        console = {
+            log: function() { }
+        };
+    }
+    </script>
+
+</body></html>

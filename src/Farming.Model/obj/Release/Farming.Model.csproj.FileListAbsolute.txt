@@ -1,0 +1,5 @@
+C:\Users\hackuser2\Desktop\Azure\CSharp\Farming\src\Farming.Model\bin\Release\Farming.Model.dll
+C:\Users\hackuser2\Desktop\Azure\CSharp\Farming\src\Farming.Model\bin\Release\Farming.Model.pdb
+C:\Users\hackuser2\Desktop\Azure\CSharp\Farming\src\Farming.Model\obj\Release\Farming.Model.csprojResolveAssemblyReference.cache
+C:\Users\hackuser2\Desktop\Azure\CSharp\Farming\src\Farming.Model\obj\Release\Farming.Model.dll
+C:\Users\hackuser2\Desktop\Azure\CSharp\Farming\src\Farming.Model\obj\Release\Farming.Model.pdb

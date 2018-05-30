@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="SQLDBVirtualFarmerAssitEntities-Web.config Connection String" description="SQLDBVirtualFarmerAssitEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/FarmingEntityModel.csdl|res://*/FarmingEntityModel.ssdl|res://*/FarmingEntityModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=tcp:ehadserver.database.windows.net,1433;initial catalog=SQLDBVirtualFarmerAssit;persist security info=True;user id=ehad;password=Emblem123;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\hackuser2\\Desktop\\Azure\\CSharp\\Farming\\src\\FarmingBot\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='SQLDBVirtualFarmerAssitEntities']/@connectionString" />
+  </parameter>
+</parameters>
